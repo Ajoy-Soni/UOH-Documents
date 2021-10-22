@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User - UOH Docs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+    function toggleDetails(ele) {
+        details = document.querySelector(".contact-details");
+        ele.style.display = "none";
+        details.style.display = "block";
+    }
+</script>
+
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-card {
+        width: 400px;
+        text-align: center;
+        border-radius: 25px;
+        overflow: hidden;
+        border: 2px solid darkgrey;
+    }
+
+    .card-header {
+        background: transparent;
+        padding: 60px 40px;
+    }
+
+    .pic {
+        display: inline-block;
+        padding: 8px;
+        background: linear-gradient(130deg, #425e7c, #914444);
+        margin: auto;
+        border-radius: 50%;
+        background-size: 200% 200%;
+        animation: animated-gradient 2s linear infinite;
+    }
+
+    .pic img {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .name {
+        color: darkgrey;
+        font-size: 28px;
+        font-weight: 600;
+        margin: 10px 0;
+    }
+
+    .desc {
+        font-size: 18px;
+        color: #c74444;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 12px 50px;
+        color: #c74444;
+        border: 2px solid #c74444;;
+        border-radius: 6px;
+        margin-top: 16px;
+        transition: .3s linear;
+    }
+
+    .card-footer {
+        background: #dddddd;
+        padding: 60px 10px;
+    }
+
+    .numbers {
+        display: flex;
+        align-items: center;
+    }
+
+    .item {
+        flex: 1;
+        text-transform: uppercase;
+        font-size: 13px;
+        color: #c74444;;
+    }
+
+    .item span {
+        display: block;
+        color: #2c3a47;
+        font-size: 30px;
+    }
+
+    .border {
+        width: 1px;
+        height: 30px;
+        background: #bbb;
+    }
+</style>
+
+<body>
+
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+
+            <li class="nav-item logo">
+                <a href="./index.html" class="nav-link">
+                    <img src="./icons/uoh.svg" alt="uoh logo" id="logo-img">
+                    <span class="link-text">UOH</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="./upload.html" class="nav-link">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="upload"
+                        class="svg-inline--fa fa-upload fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                            d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                        </path>
+                    </svg>
+                    <span class="link-text">New</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="./storage.html" class="nav-link">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="database"
+                        class="svg-inline--fa fa-database fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512">
+                        <path fill="currentColor"
+                            d="M448 73.143v45.714C448 159.143 347.667 192 224 192S0 159.143 0 118.857V73.143C0 32.857 100.333 0 224 0s224 32.857 224 73.143zM448 176v102.857C448 319.143 347.667 352 224 352S0 319.143 0 278.857V176c48.125 33.143 136.208 48.572 224 48.572S399.874 209.143 448 176zm0 160v102.857C448 479.143 347.667 512 224 512S0 479.143 0 438.857V336c48.125 33.143 136.208 48.572 224 48.572S399.874 369.143 448 336z">
+                        </path>
+                    </svg>
+                    <span class="link-text">Storage</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="./user.html" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-circle"
+                        viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                    <span class="link-text">User</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="./homepage.html" class="nav-link">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sign-out-alt"
+                        class="svg-inline--fa fa-sign-out-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                            d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z">
+                        </path>
+                    </svg>
+                    <span class="link-text">Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+
+    <main>
+        <h1>
+            User Details
+        </h1>
+
+        <div class="container">
+            <div class="profile-card">
+                <div class="card-header">
+                    <div class="pic">
+                        <img src="./icons/user.svg" alt="user pic">
+                    </div>
+                    <div class="name">Name Here</div>
+                    <div class="desc">UOH Software Developer</div>
+                    <a href="#" class="contact-btn" onclick="toggleDetails(this);">Contact Details</a>
+                    <div class="contact-details" style="display: none">
+                        dummyemail@gmail.com <br> +91 98765 12345
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="numbers">
+                        <div class="item">
+                            <span>12</span>
+                            Files
+                        </div>
+                        <div class="border"></div>
+                        <div class="item">
+                            <span>4</span>
+                            Folders
+                        </div>
+                        <div class="border"></div>
+                        <div class="item">
+                            <span>3.1 GB</span>
+                            Storage
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+
+</html>

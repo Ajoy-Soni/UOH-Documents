@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UOH Docs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+    <script>
+        let strength = 0;
+        let validations = [];
+
+
+
+        function validatePassword(e) {
+
+            let bar1 = document.querySelector(".bar1");
+            let bar2 = document.querySelector(".bar2");
+            let bar3 = document.querySelector(".bar3");
+            let bar4 = document.querySelector(".bar4");
+
+            let rule1 = document.querySelector(".rule1");
+            let rule2 = document.querySelector(".rule2");
+            let rule3 = document.querySelector(".rule3");
+            let rule4 = document.querySelector(".rule4");
+
+            const password = e.value;
+            validations = [
+                (password.length > 5),
+                (password.search(/[A-Z]/) > -1),
+                (password.search(/[0-9]/) > -1),
+                (password.search(/[!@#$%^&*]/) > -1)
+            ];
+            strength = validations.reduce((acc, cur) => acc + cur);
+
+            if (validations[0]) {
+                rule1.style.color = "yellowgreen";
+            } else {
+                rule1.style.color = "orangered";
+            }
+
+            if (validations[1]) {
+                rule2.style.color = "yellowgreen";
+            } else {
+                rule2.style.color = "orangered";
+            }
+
+            if (validations[2]) {
+                rule3.style.color = "yellowgreen";
+            } else {
+                rule3.style.color = "orangered";
+            }
+
+            if (validations[3]) {
+                rule4.style.color = "yellowgreen";
+            } else {
+                rule4.style.color = "orangered";
+            }
+
+            if (strength > 0) {
+                bar1.classList.add("bar-show");
+            } else if (bar1.classList.contains("bar-show")) {
+                bar1.classList.remove("bar-show");
+            }
+
+            if (strength > 1) {
+                bar2.classList.add("bar-show");
+
+            } else if (bar2.classList.contains("bar-show")) {
+                bar2.classList.remove("bar-show");
+            }
+
+            if (strength > 2) {
+                bar3.classList.add("bar-show");
+
+            } else if (bar3.classList.contains("bar-show")) {
+                bar3.classList.remove("bar-show");
+            }
+
+            if (strength > 3) {
+                bar4.classList.add("bar-show");
+                document.querySelector(".confirm-password").disabled = false;
+            } else if (bar4.classList.contains("bar-show")) {
+                bar4.classList.remove("bar-show");
+                document.querySelector(".confirm-password").disabled = true;
+            }
+        }
+
+        function matchPassword() {
+            let password = document.querySelector(".password");
+            let confirmPassword = document.querySelector(".confirm-password");
+
+            if (password.value == confirmPassword.value) {
+                confirmPassword.style.color = "yellowgreen";
+            } else {
+                confirmPassword.style.color = "orangered";
+            }
+        }
+
+
+    </script>
+
+    <style>
+        body {
+            background-color: #23232e;
+            margin: 8vh 10vw;
+            transform: scale(1.1);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heading {
+            color: #afafaf;
+        }
+
+        .login-signup {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .or {
+            color: #afafaf;
+        }
+
+        .form-container {
+            border: 4px solid #afafaf;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        form {
+            --text-color: #afafaf;
+            max-width: 500px;
+        }
+
+        .field {
+            width: 100%;
+            position: relative;
+            border-bottom: 2px dashed var(--text-color);
+            margin: 4rem auto 1rem;
+        }
+
+        .label {
+            color: var(--text-color);
+            font-size: 1.2rem;
+        }
+
+        .input {
+            outline: none;
+            border: none;
+            overflow: hidden;
+            margin: 0;
+            width: 100%;
+            padding: 0.25rem 0;
+            background: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .input:valid {
+            color: yellowgreen;
+        }
+
+        .input:invalid {
+            color: orangered;
+        }
+
+        .field::after {
+            content: "";
+            position: relative;
+            display: block;
+            height: 4px;
+            width: 100%;
+            background: #d16dff;
+            transform: scaleX(0);
+            transform-origin: 0%;
+            transition: transform 500ms ease;
+            top: 2px;
+        }
+
+        .field:focus-within {
+            border-color: transparent;
+        }
+
+        .field:focus-within::after {
+            transform: scaleX(1);
+        }
+
+        .label {
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: translateY(-1rem);
+            transform-origin: 0%;
+            transition: transform 400ms ease;
+        }
+
+        .field:focus-within .label,
+        .input:not(:placeholder-shown)+.label {
+            transform: scale(0.8) translateY(-3rem);
+        }
+
+        .strength {
+            display: flex;
+            height: 20px;
+            width: 100%;
+        }
+
+        .bar {
+            margin-right: 5px;
+            height: 100%;
+            width: 25%;
+            transition: box-shadow 500ms;
+            box-shadow: inset 0px 20px #1f1f1f;
+        }
+
+        .bar-show {
+            box-shadow: none;
+        }
+
+        .bar1 {
+            background: linear-gradient(to right, red, orangered);
+        }
+
+        .bar2 {
+            background: linear-gradient(to right, orangered, yellow);
+        }
+
+        .bar3 {
+            background: linear-gradient(to right, yellow, yellowgreen);
+        }
+
+        .bar4 {
+            background: linear-gradient(to right, yellowgreen, green);
+        }
+
+        button {
+            width: 100%;
+            border-radius: 20px;
+            background-color: white;
+            border: none;
+            color: #23232e;
+            padding: 10px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2rem;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            text-transform: uppercase;
+            border: 2px solid #e7e7e7;
+            font-weight: bolder;
+        }
+
+        button:hover {
+            background-color: #afafaf;
+        }
+
+        /* Small Screens */
+        @media only screen and (max-width: 800px) {
+            .login-signup {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+        }
+
+        /* Large Screens */
+        @media only screen and (min-width: 800px) {
+            .login-signup {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="heading">
+            <h1>
+                UOH Documents Manager
+            </h1>
+        </div>
+
+        <div class="login-signup">
+            <div id="login" class="form-container">
+
+                <form action="./index.html" >
+                    <div class="field">
+                        <input type="email" name="email" class="input" placeholder="" required />
+                        <label for="email" class="label">Email</label>
+                    </div>
+
+                    <div class="field">
+                        <input type="password" name="password" class="input" placeholder="" required />
+                        <label for="password" class="label">Password</label>
+                    </div>
+
+                    <div class="button">
+                        <button type="submit">
+                            LOGIN
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="or">
+                <h2>
+                    &lt; OR &gt;
+                </h2>
+            </div>
+
+            <div id="signup" class="form-container">
+
+                <form onsubmit="return false">
+
+                    <div class="field">
+                        <input type="email" name="email" class="input" placeholder="" required />
+                        <label for="email" class="label">Email</label>
+                    </div>
+
+                    <div class="field">
+                        <input type="password" name="password" class="input password" oninput="validatePassword(this)"
+                            required />
+                        <label for="password" class="label">Password</label>
+                    </div>
+
+                    <div class="strength">
+                        <span class="bar bar1"></span>
+                        <span class="bar bar2"></span>
+                        <span class="bar bar3"></span>
+                        <span class="bar bar4"></span>
+                    </div>
+
+                    <ul>
+                        <li class="rule1"> must be at least 5 characters</li>
+                        <li class="rule2"> must contain a capital letter</li>
+                        <li class="rule3"> must contain a number</li>
+                        <li class="rule4"> must contain one special character</li>
+                    </ul>
+
+                    <div class="field">
+                        <input type="password" name="confirm-password" class="input confirm-password" placeholder=""
+                            oninput="matchPassword(this)" required disabled />
+                        <label for="confirm-password" class="label">Confirm Password</label>
+                    </div>
+
+                    <div class="button">
+                        <button type="submit">SIGNUP</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

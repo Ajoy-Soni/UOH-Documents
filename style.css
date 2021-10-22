@@ -1,0 +1,143 @@
+:root {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    background-color: #3f3f53;
+}
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+main {
+    margin: 1rem;
+    margin-left: 6rem;
+    padding: 1.5rem;
+    border: solid 2px darkgrey;
+    border-radius: 30px;
+    background:#343444;
+}
+
+.navbar {
+    position: fixed;
+    background-color: var(--bg-primary);
+    overflow-y: scroll;
+    transition: width 200ms ease;
+}
+
+.navbar::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-item:nth-last-child(2) {
+    margin-top: auto;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.link-text {
+    display: none;
+    margin-left: 1rem;
+}
+
+.nav-link svg {
+    margin: 0 1.5rem;
+    min-width: 2rem;
+    max-width: 2rem;
+}
+
+.nav-link img {
+    min-width: 4rem;
+    max-width: 4rem;
+    margin-left: 0.55rem;
+    margin-right: 0.55rem;
+    filter: invert(1);
+}
+
+.nav-link:hover {
+    background: var(--bg-secondary);
+}
+
+/* Small Screens */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        bottom: 0;
+        width: 100vw;
+        height: 6rem;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .nav-link {
+        justify-content: center;
+    }
+
+    main {
+        margin: 1rem;
+        margin-bottom: 7rem;;
+    }
+
+
+}
+
+/* Large Screens */
+@media only screen and (min-width: 600px) {
+    .navbar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
+
+    .navbar:hover {
+        width: 16rem;
+    }
+
+    .navbar:hover .link-text {
+        display: inline;
+    }
+}
